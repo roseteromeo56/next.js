@@ -30,10 +30,7 @@ export default function HeroPost({
           )}
         </div>
         <div>
-          <div
-            className="text-lg leading-relaxed mb-4"
-            dangerouslySetInnerHTML={{ __html: excerpt }}
-          ></div>
+          <p className="text-lg leading-relaxed mb-4">{excerpt}</p>
           <Avatar name={author.full_name} picture={author.profile_pic[0].url} />
         </div>
       </div>
