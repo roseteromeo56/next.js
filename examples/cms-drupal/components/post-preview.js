@@ -3,6 +3,7 @@ import Date from "../components/date";
 import CoverImage from "./cover-image";
 import Link from "next/link";
 import DOMPurify from "isomorphic-dompurify";
+import { internalPath } from "../lib/api";
 
 export default function PostPreview({
   title,
@@ -11,16 +12,17 @@ export default function PostPreview({
   excerpt,
   author,
   slug,
-}) {
+}) { dd/automation/sanitize-drupal-preview-excerpts-8bbaaef8
   const sanitizedExcerpt = DOMPurify.sanitize(excerpt ?? "");
+  const slugPath = internalPath(slug); canary
 
   return (
     <div>
       <div className="mb-5">
-        <CoverImage title={title} coverImage={coverImage} slug={slug} />
+        <CoverImage title={title} coverImage={coverImage} slug={slugPath} />
       </div>
       <h3 className="text-3xl mb-3 leading-snug">
-        <Link href={slug} className="hover:underline">
+        <Link href={slugPath} className="hover:underline">
           {title}
         </Link>
       </h3>
