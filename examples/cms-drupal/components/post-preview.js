@@ -2,6 +2,7 @@ import Avatar from "../components/avatar";
 import Date from "../components/date";
 import CoverImage from "./cover-image";
 import Link from "next/link";
+import DOMPurify from "isomorphic-dompurify";
 import { internalPath } from "../lib/api";
 
 export default function PostPreview({
@@ -11,8 +12,9 @@ export default function PostPreview({
   excerpt,
   author,
   slug,
-}) {
-  const slugPath = internalPath(slug);
+}) { dd/automation/sanitize-drupal-preview-excerpts-8bbaaef8
+  const sanitizedExcerpt = DOMPurify.sanitize(excerpt ?? "");
+  const slugPath = internalPath(slug); canary
 
   return (
     <div>
@@ -29,7 +31,7 @@ export default function PostPreview({
       </div>
       <div
         className="text-lg leading-relaxed mb-4"
-        dangerouslySetInnerHTML={{ __html: excerpt }}
+        dangerouslySetInnerHTML={{ __html: sanitizedExcerpt }}
       />
       <Avatar author={author} />
     </div>
