@@ -2,6 +2,7 @@ import Avatar from "../components/avatar";
 import Date from "../components/date";
 import CoverImage from "../components/cover-image";
 import Link from "next/link";
+import { internalPath } from "../lib/api";
 
 export default function HeroPost({
   title,
@@ -11,17 +12,19 @@ export default function HeroPost({
   author,
   slug,
 }) {
+  const slugPath = internalPath(slug);
+
   return (
     <section>
       <div className="mb-8 md:mb-16">
         {coverImage && (
-          <CoverImage title={title} coverImage={coverImage} slug={slug} />
+          <CoverImage title={title} coverImage={coverImage} slug={slugPath} />
         )}
       </div>
       <div className="md:grid md:grid-cols-2 md:gap-x-16 lg:gap-x-8 mb-20 md:mb-28">
         <div>
           <h3 className="mb-4 text-4xl lg:text-6xl leading-tight">
-            <Link href={slug} className="hover:underline">
+            <Link href={slugPath} className="hover:underline">
               {title}
             </Link>
           </h3>
