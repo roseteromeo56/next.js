@@ -2,6 +2,7 @@ import Avatar from "../components/avatar";
 import Date from "../components/date";
 import CoverImage from "./cover-image";
 import Link from "next/link";
+import DOMPurify from "isomorphic-dompurify";
 
 export default function PostPreview({
   title,
@@ -11,6 +12,8 @@ export default function PostPreview({
   author,
   slug,
 }) {
+  const sanitizedExcerpt = DOMPurify.sanitize(excerpt ?? "");
+
   return (
     <div>
       <div className="mb-5">
@@ -26,7 +29,7 @@ export default function PostPreview({
       </div>
       <div
         className="text-lg leading-relaxed mb-4"
-        dangerouslySetInnerHTML={{ __html: excerpt }}
+        dangerouslySetInnerHTML={{ __html: sanitizedExcerpt }}
       />
       <Avatar author={author} />
     </div>
