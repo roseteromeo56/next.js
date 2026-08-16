@@ -46,7 +46,7 @@
     "picocolors": "1.0.0",
     "prettier-plugin-tailwindcss": "0.3.0",
     "prompts": "2.4.2",
-    "tar": "6.1.15",
+    "tar": "7.5.11",
     "update-check": "1.5.4",
     "validate-npm-package-name": "3.0.0"
   },
